@@ -70,39 +70,39 @@ namespace Bds.TechTest.Tests
 
             Assert.That(results.Count == 9);
 
-            Assert.That(results[0].Rank == 0);
+            Assert.That(results[0].Ranks[_googleEngine.Name] == 0);
             Assert.That(results[0].Title == "joss - Wiktionary");
             Assert.That(results[0].Uri.AbsoluteUri == "https://en.wiktionary.org/wiki/joss");
 
-            Assert.That(results[1].Rank == 1);
+            Assert.That(results[1].Ranks[_googleEngine.Name] == 1);
             Assert.That(results[1].Title == "Joss Stone :: Joss Stone | Project Mama Earth");
             Assert.That(results[1].Uri.AbsoluteUri == "https://www.jossstone.com/");
 
-            Assert.That(results[2].Rank == 2);
+            Assert.That(results[2].Ranks[_googleEngine.Name] == 2);
             Assert.That(results[2].Title == "Joss - Urban Dictionary");
             Assert.That(results[2].Uri.AbsoluteUri == "https://www.urbandictionary.com/define.php?term=Joss");
 
-            Assert.That(results[3].Rank == 3);
+            Assert.That(results[3].Ranks[_googleEngine.Name] == 3);
             Assert.That(results[3].Title == "Joss | Definition of Joss by Merriam-Webster");
             Assert.That(results[3].Uri.AbsoluteUri == "https://www.merriam-webster.com/dictionary/joss");
 
-            Assert.That(results[4].Rank == 4);
+            Assert.That(results[4].Ranks[_googleEngine.Name] == 4);
             Assert.That(results[4].Title == "Joss (Chinese Statue) - Wikipedia");
             Assert.That(results[4].Uri.AbsoluteUri == "https://en.wikipedia.org/wiki/Joss_(Chinese_Statue)");
 
-            Assert.That(results[5].Rank == 5);
+            Assert.That(results[5].Ranks[_googleEngine.Name] == 5);
             Assert.That(results[5].Title == "JOSS - Wikipedia");
             Assert.That(results[5].Uri.AbsoluteUri == "https://en.wikipedia.org/wiki/JOSS");
 
-            Assert.That(results[6].Rank == 6);
+            Assert.That(results[6].Ranks[_googleEngine.Name] == 6);
             Assert.That(results[6].Title == "Joss | Definition of Joss at Dictionary.com");
             Assert.That(results[6].Uri.AbsoluteUri == "https://www.dictionary.com/browse/joss");
 
-            Assert.That(results[7].Rank == 7);
+            Assert.That(results[7].Ranks[_googleEngine.Name] == 7);
             Assert.That(results[7].Title == "Joss Whedon (@joss) | Twitter");
             Assert.That(results[7].Uri.AbsoluteUri == "https://twitter.com/joss?lang=en");
 
-            Assert.That(results[8].Rank == 8);
+            Assert.That(results[8].Ranks[_googleEngine.Name] == 8);
             Assert.That(results[8].Title == "Joss | Definition of Joss by Lexico");
             Assert.That(results[8].Uri.AbsoluteUri == "https://www.lexico.com/en/definition/joss");
         }

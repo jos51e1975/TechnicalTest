@@ -6,7 +6,7 @@ namespace Bds.TechTest.Models
     {
         public string RunQuery(string query)
         {
-            throw new NotImplementedException();
+            return System.IO.File.ReadAllText("Models/googleresults.html");
         }
     }
 }

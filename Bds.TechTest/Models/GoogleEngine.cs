@@ -23,7 +23,7 @@ namespace Bds.TechTest.Models
             // ...run the query through google...
 
             string returnedHtml = queryRunner.RunQuery(query);
-
+            
             // ...parse the returned HTML to gather the results
 
             var htmlDocument = new HtmlDocument();
@@ -47,7 +47,7 @@ namespace Bds.TechTest.Models
 
                     var title = resultDiv.SelectSingleNode(".//h3").InnerText;
 
-                    results.Add(new SearchEngineResult(title, new Uri(uriString), rank));
+                    results.Add(new SearchEngineResult(title, new Uri(uriString), Name, rank));
 
                     rank++;
                 }
