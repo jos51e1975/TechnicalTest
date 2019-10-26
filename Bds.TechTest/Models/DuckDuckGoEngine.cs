@@ -9,7 +9,7 @@ namespace Bds.TechTest.Models
         {
         }
 
-        public override IEnumerable<SearchEngineResult> RunQuery(string queryTerm)
+        public override IList<SearchEngineResult> SearchFor(string queryTerm, IQueryRunner queryRunner)
         {
             throw new NotImplementedException();
         }

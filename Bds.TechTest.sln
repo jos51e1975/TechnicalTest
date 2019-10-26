@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{54B37C4B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bds.TechTest", "Bds.TechTest\Bds.TechTest.csproj", "{D14F5AAE-DB23-46F6-9342-F22C552E2934}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bds.TechTest.Tests2", "Tests\Bds.TechTest.Tests\Bds.TechTest.Tests2.csproj", "{FD37FA1A-EB56-4EC4-864C-E57EBAC9ECBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bds.TechTest.Tests", "Tests\Bds.TechTest.Tests\Bds.TechTest.Tests.csproj", "{FD37FA1A-EB56-4EC4-864C-E57EBAC9ECBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

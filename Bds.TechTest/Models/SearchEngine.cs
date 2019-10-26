@@ -5,9 +5,9 @@ namespace Bds.TechTest.Models
 {
     public abstract class SearchEngine
     {
-        protected string Name { get; private set;  }
+        public string Name { get; protected set;  }
 
-        public abstract IEnumerable<SearchEngineResult> RunQuery(string queryTerm);
+        public abstract IList<SearchEngineResult> SearchFor(string queryTerm, IQueryRunner queryRunner);
 
         protected SearchEngine(string name)
         {
