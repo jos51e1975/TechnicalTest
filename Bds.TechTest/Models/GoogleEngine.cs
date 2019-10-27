@@ -55,7 +55,7 @@ namespace Bds.TechTest.Models
             }
             catch (Exception ex)
             {
-                // TODO!!
+                // TODO: It would be better 
                 //Debug.Write(ex.ToString());
             }
 

@@ -38,37 +38,19 @@ namespace Test.Controllers
                 // We could expand this to allow more engines and even show tick boxes on screen
                 // for which ones we want to use.
 
-                // TODO: Use expression trees or MEF or reflection to get the search engines
+                // TODO: Use MEF or reflection to get the search engines
 
                 var engines = new List<SearchEngine> { new GoogleEngine() , new DuckDuckGoEngine() };
 
+                // TODO: Need to use dependency injection on the Query Runner
+
                 var queryRunner = new HttpQueryRunner();
 
-                // The results are merged from all the engines, with rankings for each engine
-                // where the index of the rank in the list is the index of the engine in the engines list
-                var allResults = new HashSet<SearchEngineResult>();
+                var combinedResults = RunQueryThroughEngines(searchTerm, engines, queryRunner);
 
-                foreach (var engine in engines)
-                {
+                _logger.LogDebug($"Found {combinedResults.Count} results for {searchTerm}");
 
-                    var results = engine.SearchFor(searchTerm, queryRunner);
-
-                    foreach (var result in results)
-                    {
-                        if (allResults.TryGetValue(result, out var foundResult))
-                        {
-                            foundResult.Ranks[result.Ranks.First().Key] = result.Ranks.First().Value;
-                        }
-                        else
-                        {
-                            allResults.Add(result);
-                        }
-                    }
-                }
-
-                _logger.LogDebug($"Found {allResults.Count} results for {searchTerm}");
-
-                var json = Json(allResults);
+                var json = Json(combinedResults);
 
                 return json;
             }
@@ -84,6 +66,35 @@ namespace Test.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        // Shouldn't be public - needed for tests; describe how it should be done with the whole
+        // HomeController DoSearch and Dependency Injection
+        public HashSet<SearchEngineResult> RunQueryThroughEngines(string searchTerm, List<SearchEngine> engines, IQueryRunner queryRunner)
+        {
+            // The results are merged from all the engines, with rankings for each engine
+            // where the index of the rank in the list is the index of the engine in the engines list
+            var allResults = new HashSet<SearchEngineResult>();
+
+            foreach (var engine in engines)
+            {
+
+                var results = engine.SearchFor(searchTerm, queryRunner);
+
+                foreach (var result in results)
+                {
+                    if (allResults.TryGetValue(result, out var foundResult))
+                    {
+                        foundResult.Ranks[result.Ranks.First().Key] = result.Ranks.First().Value;
+                    }
+                    else
+                    {
+                        allResults.Add(result);
+                    }
+                }
+            }
+
+            return allResults;
         }
     }
 }

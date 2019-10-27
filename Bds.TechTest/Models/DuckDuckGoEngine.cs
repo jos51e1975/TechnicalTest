@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
 namespace Bds.TechTest.Models
@@ -49,8 +48,8 @@ namespace Bds.TechTest.Models
                     results.Add(new SearchEngineResult(title, new Uri(uriString), Name, rank));
 
                     rank++;
-            }
                 }
+            }
             catch (Exception ex)
             {
                 // TODO!!

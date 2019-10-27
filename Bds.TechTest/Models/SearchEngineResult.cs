@@ -34,6 +34,11 @@ namespace Bds.TechTest.Models
             return Uri.GetHashCode();
         }
 
+        public override bool Equals(object obj)
+        {
+            return ((SearchEngineResult)obj).Uri == Uri;
+        }
+
         //public int CompareTo([AllowNull] SearchEngineResult other)
         //{
         //    Debug.Assert(other != null);
