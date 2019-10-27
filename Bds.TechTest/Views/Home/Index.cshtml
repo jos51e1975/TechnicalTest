@@ -58,7 +58,7 @@
                         ranksString += '<td>' + results[result].displayedRanks[displayedRankIndex].item2 + '</td>';
                       }
 
-                      $('#tblResults tr:last').after('<tr><td><a href=\"'
+                      $('#tblResults tr:last').after('<tr id="RowResult"><td><a href=\"'
                           + results[result].uri + '\">'
                           + results[result].title 
                           + '</a></td>' + ranksString +'</tr>');                       
@@ -79,11 +79,11 @@
 
 
        var elmtTable = document.getElementById("tblResults");
-       var tableRows = elmtTable.getElementsByTagName('tr');
+       var tableRows = table.querySelectorAll('tr[id="RowResult"');
        var rowCount = tableRows.length;
-        console.log("here " + rowCount);
-        if (rowCount > 1){
-                 elmtTable.removeChild(tableRows[1]);
+       console.log("here " + tableRows.length);
+        for(var i=0; i < tableRows.length; i++){
+            tabledeleteRow(rowCount[i].rowIndex);
         }
 
         });

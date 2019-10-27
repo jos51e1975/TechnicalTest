@@ -30,9 +30,11 @@ namespace Bds.TechTest.Tests
 
             // Use the Moq to check that it is forming the query the way we expect
 
+            string resultsHtml = "";
+
             var mockQueryRunner = new Mock<IQueryRunner>();
 
-            mockQueryRunner.Setup(qr => qr.RunQuery(It.Is<string>(s => s == "https://www.google.com/search?q=Joss"))).Verifiable();
+            mockQueryRunner.Setup(qr => qr.RunQuery(It.Is<string>(s => s == "https://www.google.com/search?q=Joss"))).Returns(resultsHtml).Verifiable();
 
             var results = _googleEngine.SearchFor("Joss", mockQueryRunner.Object);
 

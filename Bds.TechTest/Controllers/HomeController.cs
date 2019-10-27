@@ -40,7 +40,7 @@ namespace Test.Controllers
 
                 // TODO: Use expression trees or MEF or reflection to get the search engines
 
-                var engines = new List<SearchEngine> { new GoogleEngine() /*, new DuckDuckGoEngine()*/ };
+                var engines = new List<SearchEngine> { new GoogleEngine() , new DuckDuckGoEngine() };
 
                 var queryRunner = new HttpQueryRunner();
 
@@ -50,6 +50,7 @@ namespace Test.Controllers
 
                 foreach (var engine in engines)
                 {
+
                     var results = engine.SearchFor(searchTerm, queryRunner);
 
                     foreach (var result in results)

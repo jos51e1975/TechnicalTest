@@ -23,23 +23,24 @@ namespace Bds.TechTest.Models
             // ...run the query through google...
 
             string returnedHtml = queryRunner.RunQuery(query);
-            
+
             // ...parse the returned HTML to gather the results
-
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(returnedHtml);
-
-            // We need to look for div tags with class g
-
-            int rank = 0;
-
-            var resultNodes = htmlDocument.DocumentNode.SelectNodes("//div[@class='g']");
-
+            
             var results = new List<SearchEngineResult>();
 
-            foreach (var node in resultNodes)
+            try
             {
-                try
+                var htmlDocument = new HtmlDocument();
+
+                htmlDocument.LoadHtml(returnedHtml);
+
+                // We need to look for div tags with class g
+
+                int rank = 0;
+
+                var resultNodes = htmlDocument.DocumentNode.SelectNodes("//div[@class='g']");
+
+                foreach (var node in resultNodes)
                 {
                     var resultDiv = node.SelectSingleNode(".//div[@class='r']");
 
@@ -51,11 +52,11 @@ namespace Bds.TechTest.Models
 
                     rank++;
                 }
-                catch (Exception ex)
-                {
-                    // TODO!!
-                    //Debug.Write(ex.ToString());
-                }
+            }
+            catch (Exception ex)
+            {
+                // TODO!!
+                //Debug.Write(ex.ToString());
             }
 
             return results;
