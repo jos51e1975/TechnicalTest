@@ -42,8 +42,6 @@ namespace Test.Controllers
 
                 var engines = new List<SearchEngine> { new GoogleEngine() , new DuckDuckGoEngine() };
 
-                // TODO: Need to use dependency injection on the Query Runner
-
                 var queryRunner = new HttpQueryRunner();
 
                 var combinedResults = RunQueryThroughEngines(searchTerm, engines, queryRunner);

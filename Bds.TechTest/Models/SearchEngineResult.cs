@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Bds.TechTest.Models
 {
-    public class SearchEngineResult // : IComparable<SearchEngineResult>
+    public class SearchEngineResult
     {
         public string Title { get; }
         public Uri Uri { get; }
@@ -38,16 +36,5 @@ namespace Bds.TechTest.Models
         {
             return ((SearchEngineResult)obj).Uri == Uri;
         }
-
-        //public int CompareTo([AllowNull] SearchEngineResult other)
-        //{
-        //    Debug.Assert(other != null);
-
-        //    int thisRank = 
-
-        //    int the
-
-        //    return string.Compare(this.Uri.AbsoluteUri, other.Uri.AbsoluteUri));
-        //}
     }
 }
