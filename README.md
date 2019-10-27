@@ -12,6 +12,8 @@ Error checking is not as good as it could be but I was unable to try many search
 
 I have written some tests on a known search term "Joss".  Some of the results were present in both engine results and I then combined these so the user would also have this information.  It uses AJAX to call the controller rather than reloading the page.  I would ususally use a spinner whilst its loading and I would usually put the results in a datatable. It needs more documentation
 
+Given this was a fork of the original I have submitted my answer as a pull request.
+
 thanks
 Jocelyn
 
