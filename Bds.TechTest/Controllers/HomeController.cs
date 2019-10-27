@@ -48,7 +48,9 @@ namespace Test.Controllers
 
                 _logger.LogDebug($"Found {combinedResults.Count} results for {searchTerm}");
 
-                var json = Json(combinedResults);
+                var engineNamesAndResults = new Tuple<List<string>, HashSet<SearchEngineResult>>(engines.Select(e => e.Name).ToList(), combinedResults);
+
+                var json = Json(engineNamesAndResults);
 
                 return json;
             }

@@ -20,8 +20,8 @@
              <thead>  
              <tr>  
                <th>Result</th>  
-               <th>Google Rank</th>      
-               <th>DuckDuckGo Rank</th>   
+               <th id='Engine1Title'>Engine 1 Rank</th>      
+               <th id='Engine2Title'>Engine 2 Rank</th>   
              </tr>  
              </thead>
              <tbody id='tb'>
@@ -40,32 +40,31 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
- <script>
-
-   $(document).ready(function () {
-
+  <script>
+    $(document).ready(function () {
        // Get Search Results
        $("#showSearchResults").click(function () {
            try {
-               $.post("/Home/DoSearch/", { searchTerm: JSON.stringify($("#SearchText").val())
-               }, function (results) {
-                   for (var result = 0; result < results.length; result++)
-                   { 
-                     var ranksString = '';
+             $.post("/Home/DoSearch/", { searchTerm: JSON.stringify($("#SearchText").val())},
+              function (results) {
+                $("#Engine1Title").html(results.item1[0]);
+                $("#Engine2Title").html(results.item1[1]);
 
-                     for (var displayedRankIndex = 0; displayedRankIndex < results[result].displayedRanks.length; displayedRankIndex++)
+                for (var result = 0; result < results.item2.length; result++)
+                   { 
+                      var ranksString = '';
+
+                      for (var displayedRankIndex = 0; displayedRankIndex < results[result].displayedRanks.length; displayedRankIndex++)
                       {
-                        ranksString += '<td>' + results[result].displayedRanks[displayedRankIndex].item2 + '</td>';
+                        ranksString += '<td>' + results.item2[result].displayedRanks[displayedRankIndex].item2 + '</td>';
                       }
 
-                      $('#tblResults tr:last').after('<tr id="RowResult"><td><a href=\"'
+                      $('#tblResults tr:last').after('<tr class="rowResult"><td><a href=\"'
                           + results[result].uri + '\">'
                           + results[result].title 
                           + '</a></td>' + ranksString +'</tr>');                       
                    }
                });
-
-
            }
            catch (e) {
                window.alert("Got here" + e);
@@ -75,17 +74,8 @@
 
 
      // Remove results if different search in box
-    $("input[name='SearchText']").on("propertychange change  input paste ", function () {
-
-
-       var elmtTable = document.getElementById("tblResults");
-       var tableRows = table.querySelectorAll('tr[id="RowResult"');
-       var rowCount = tableRows.length;
-       console.log("here " + tableRows.length);
-        for(var i=0; i < tableRows.length; i++){
-            tabledeleteRow(rowCount[i].rowIndex);
-        }
-
-        });
+ $("input[name='SearchText']").on("propertychange change click keyup input paste", function () {
+      $(".rowResult").remove();
        });
+      });
  </script>
